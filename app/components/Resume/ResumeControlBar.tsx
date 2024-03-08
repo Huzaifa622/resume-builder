@@ -45,16 +45,8 @@ const ResumeControlBar = ({
         // download={fileName}
         onClick={(e) => {
           if (!data) {
-            window.alert("No required field");
+            window.alert("No required field filled out");
           }
-          // @ts-ignore
-          const resume = data.resume;
-          // @ts-ignore
-          const educations = resume.educations;
-          // @ts-ignore
-          const profile = resume.profile;
-          // console.log(data);
-          // console.log(educations, profile);
           e.currentTarget.href = instance.url!;
           e.currentTarget.download = fileName;
         }}

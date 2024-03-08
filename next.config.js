@@ -6,6 +6,7 @@ const nextConfig = {
     config.resolve.alias.encoding = false;
     return config;
   },
+  eslint:
 };
 
 module.exports = nextConfig;

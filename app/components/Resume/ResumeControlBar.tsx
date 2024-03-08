@@ -28,7 +28,7 @@ const ResumeControlBar = ({
   });
   const [data, setData] = useState({});
   const [instance, update] = usePDF({ document });
-
+  console.log(data);
   useEffect(() => {
     update(document);
   }, [update, document]);
@@ -36,19 +36,26 @@ const ResumeControlBar = ({
     setData(
       JSON.parse(window.localStorage.getItem("resume-builder-parser-state")!)
     );
-  }, []);
+  }, [window.localStorage.getItem("resume-builder-parser-state")]);
   return (
     <div className="sticky bottom-0 left-0 right-0 flex h-[var(--resume-control-bar-height)]  items-center justify-center px-[var(--resume-padding)] text-gray-600 lg:justify-between">
       <a
         className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 lg:ml-8 cursor-pointer"
         // href={instance.url!}
+
         // download={fileName}
         onClick={(e) => {
-          if (!data) {
-            window.alert("No required field filled out");
+          if (
+            !data?.resume?.profile?.name ||
+            !data?.resume?.profile?.email ||
+            !data?.resume.profile?.phone ||
+            !data?.resume.profile?.location
+          ) {
+            return window.alert("No required field filled out");
+          } else {
+            e.currentTarget.href = instance.url!;
+            e.currentTarget.download = fileName;
           }
-          e.currentTarget.href = instance.url!;
-          e.currentTarget.download = fileName;
         }}
       >
         <ArrowDownTrayIcon className="h-4 w-4" />

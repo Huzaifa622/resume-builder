@@ -94,7 +94,7 @@ export const Form = ({
             onChange={(e) => setHeading(e.target.value)}
           />
         </div>
-        <div className=" items-center gap-0.5 hidden">
+        <div className="flex items-center gap-0.5 ">
           {!isFirstForm && (
             <MoveIconButton type="up" onClick={handleMoveclick} />
           )}
@@ -159,9 +159,9 @@ export const FormSection = ({
       )}
       <div className="relative grid grid-cols-6 gap-3">
         {children}
-        <div className={`absolute right-0 top-0 gap-0.5 hidden`}>
+        <div className={`absolute right-0 top-0 gap-0.5 `}>
           <div
-            className={`transition-all duration-300 hidden ${
+            className={`transition-all duration-300  ${
               showMoveUp ? "" : "invisible opacity-0"
             } ${showMoveDown ? "" : "-mr-6"}`}
           >
@@ -172,7 +172,7 @@ export const FormSection = ({
             />
           </div>
           <div
-            className={`transition-all duration-300 hidden ${
+            className={`transition-all duration-300  ${
               showMoveUp ? "" : "invisible opacity-0"
             }`}
           >
